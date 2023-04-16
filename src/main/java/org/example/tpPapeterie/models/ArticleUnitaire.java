@@ -1,14 +1,16 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class ArticleUnitaire extends Article {
      private String nom;
-     private long prixUnitaire;
+     private double prixUnitaire;
 
 
-    public ArticleUnitaire(int ref, String nom, long prixUnitaire ) {
-        super(ref);
+    public ArticleUnitaire(String reference, String nom, double prixUnitaire ) {
+        super(reference);
         this.nom=nom;
         this.prixUnitaire=prixUnitaire;
+    }
+    public ArticleUnitaire() {
     }
 
     public String getNom() {
@@ -19,11 +21,11 @@ public class ArticleUnitaire extends Article {
         this.nom = nom;
     }
 
-    public long getPrixUnitaire() {
+    public double getPrixUnitaire() {
         return prixUnitaire;
     }
 
-    public void setPrixUnitaire(long prixUnitaire) {
+    public void setPrixUnitaire(double prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 

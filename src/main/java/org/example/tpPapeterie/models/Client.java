@@ -1,4 +1,4 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 import java.util.ArrayList;
 import java.util.List;

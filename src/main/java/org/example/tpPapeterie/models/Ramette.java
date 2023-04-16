@@ -1,11 +1,11 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class Ramette  extends ArticleUnitaire{
 
     private int grammage;
 
-    public Ramette(int ref, String nom, long prixUnitaire, int grammage) {
-        super(ref, nom, prixUnitaire);
+    public Ramette(String reference, String nom, double prixUnitaire, int grammage) {
+        super(reference, nom, prixUnitaire);
         this.grammage=grammage;
     }
 

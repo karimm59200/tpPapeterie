@@ -1,4 +1,4 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class AchatLot extends Article {
 
@@ -6,10 +6,10 @@ public class AchatLot extends Article {
 
      private ArticleUnitaire articleUnitaire;
 
-    private long remise;
+    private static double remise = 0.1;
 
-    public AchatLot(int ref, int quantite, long remise, ArticleUnitaire articleUnitaire) {
-        super(ref);
+    public AchatLot(String reference, int quantite, double remise, ArticleUnitaire articleUnitaire) {
+        super(reference);
         this.quantite=quantite;
         this.remise=remise;
         this.articleUnitaire=articleUnitaire;
@@ -31,12 +31,18 @@ public class AchatLot extends Article {
         this.articleUnitaire = articleUnitaire;
     }
 
-    public long getRemise() {
+    public double getRemise() {
         return remise;
     }
 
-    public void setRemise(long remise) {
+    public void setRemise(int remise) {
         this.remise = remise;
+    }
+
+    public static Ligne getLigneNouveauPrix(Ligne ligne){
+        double prix = ligne.getArticleUnitaire().getPrixUnitaire();
+        ligne.getArticleUnitaire().setPrixUnitaire(prix - (prix * remise));
+        return ligne;
     }
 
     @Override

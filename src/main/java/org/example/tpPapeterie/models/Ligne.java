@@ -1,4 +1,4 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class Ligne {
 
@@ -10,7 +10,8 @@ public class Ligne {
         this.quantite = quantite;
         this.articleUnitaire = articleUnitaire;
     }
-
+    public Ligne() {
+    }
 
 
     public int getQuantite() {
@@ -30,16 +31,12 @@ public class Ligne {
     }
 
     public void afficherLigne(){
-        long prix = articleUnitaire.getPrixUnitaire();
-        String nomArti =  articleUnitaire.getNom();
-        int refArti = articleUnitaire.getRef();
-
-
-
-
-
+        System.out.println(this.quantite + " " + articleUnitaire.getReference() + " " + articleUnitaire.getNom() + " " + articleUnitaire.getPrixUnitaire() + " " + getPrixTotalLigne());
     }
 
+    public double getPrixTotalLigne(){
+        return (double) this.quantite * this.articleUnitaire.getPrixUnitaire();
+    }
 
     @Override
     public String toString() {

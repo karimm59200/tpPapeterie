@@ -1,24 +1,27 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class Article {
-     private int ref;
+     private String reference;
 
-    public Article(int ref) {
-        this.ref = ref;
+    public Article(String ref) {
+        this.reference = ref;
     }
 
-    public int getRef() {
-        return ref;
+    public Article() {
     }
 
-    public void setRef(int ref) {
-        this.ref = ref;
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     @Override
     public String toString() {
         return "Article{" +
-                "ref=" + ref +
+                "ref=" + reference +
                 '}';
     }
 }

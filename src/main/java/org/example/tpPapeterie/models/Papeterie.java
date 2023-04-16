@@ -1,8 +1,6 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Papeterie {
 

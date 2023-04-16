@@ -1,15 +1,13 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
 
 public class Stylo extends ArticleUnitaire {
 
     private String couleur;
 
-    public Stylo(int ref, String nom, long prixUnitaire, String couleur) {
-        super(ref, nom, prixUnitaire);
+    public Stylo(String reference, String nom, double prixUnitaire, String couleur) {
+        super(reference, nom, prixUnitaire);
         this.couleur=couleur;
     }
-
-
 
     public String getCouleur() {
         return couleur;

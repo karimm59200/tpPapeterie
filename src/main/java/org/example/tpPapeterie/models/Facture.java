@@ -1,24 +1,40 @@
-package org.example.tpPapeterie;
+package org.example.tpPapeterie.models;
+
+import lombok.Builder;
+import org.example.tpPapeterie.FactureInterface.FactureInterface;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
-public class Facture {
+public class Facture implements FactureInterface {
+
+    private Client client;
 
     private int num;
 
     private Date date;
 
-    private List<Ligne> lignes;
+    private List<Ligne> lignes = new ArrayList<Ligne>();
 
-    public Facture(int num) {
+    public Facture(Client client, int num, Date date, List<Ligne> lignes) {
+        this.client = client;
         this.num = num;
-        this.date =  new Date();
-        this.lignes = new ArrayList<>();
+        this.date = date;
+        this.lignes = lignes;
     }
 
-    public Facture(){}
+    public Facture() {
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     public int getNum() {
         return num;
@@ -41,20 +57,24 @@ public class Facture {
     }
 
     public void setLignes(List<Ligne> lignes) {
-        lignes = lignes;
+        this.lignes = lignes;
     }
 
+    @Override
     public void ajouterLigneFacture(Ligne ligne){
-        this.lignes.add(ligne);
+       this.lignes.add(ligne);
     }
 
-    public void supprimerLigneFacture(int ref){
-        this.lignes.stream().filter(ligne -> ligne.getArticleUnitaire().getRef()== ref).findFirst().ifPresent(ligne -> this.lignes.remove(ligne));
+    @Override
+    public void supprimerLigneFacture(String reference){
+        this.lignes.stream().filter(ligne -> Objects.equals(ligne.getArticleUnitaire().getReference(), reference)).findFirst().ifPresent(lignes::remove);
     }
 
     public long calculerTotal(){
-        return this.lignes.stream().mapToLong(ligne->ligne.getArticleUnitaire().getPrixUnitaire()*ligne.getQuantite()).sum();
+        return lignes.stream().mapToLong(ligne-> (long) (ligne.getArticleUnitaire().getPrixUnitaire() * ligne.getQuantite())).sum();
     }
+
+
 
 
 }
